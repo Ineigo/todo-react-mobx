@@ -10,8 +10,13 @@ class TodoListStore {
     getService = () => ({ 
         createTodo: this.createTodo, 
         removeTodo: this.removeTodo,
-        editTodo: this.editTodo
+        editTodo: this.editTodo,
+        sortTodoList: this.sortTodoList
     });
+
+    sortTodoList = type => {
+        this.todos.replace(this.todos.sort((prev, next) => prev.title > next.title  ? -type : prev.title  < next.title  ? type : 0));
+    }
 
     createTodo = title => {
         this.todos.push({ title, id: this.todos.length });

@@ -15,11 +15,18 @@ class Root extends React.Component {
         console.log(typeof this.store);
     }
     render() {
+        const service = this.store.getService();
         return(
             <div>
                 <h1>ToDoStick</h1>
-                <TodoControls createTodo={this.store.getService().createTodo} />
-                <TodoList todos={this.store.todos} service={this.store.getService()} />
+                <TodoControls 
+                    createTodo={service.createTodo}
+                    sortTodoList={service.sortTodoList}
+                />
+                <TodoList 
+                    todos={this.store.todos} 
+                    service={service} 
+                />
             </div>
         );
     }

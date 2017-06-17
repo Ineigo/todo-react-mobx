@@ -18,8 +18,8 @@ class Root extends React.Component {
         return(
             <div>
                 <h1>ToDoStick</h1>
-                <TodoControls createTodo={this.store.createTodo} />
-                <TodoList todos={this.store.todos} />
+                <TodoControls createTodo={this.store.getService().createTodo} />
+                <TodoList todos={this.store.todos} service={this.store.getService()} />
             </div>
         );
     }

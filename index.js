@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TodoListStore from './components/TodoList/TodoListStore';
+import TodoList from './components/TodoList';
 
 class Root extends React.Component {
     constructor(props) {
@@ -10,11 +11,13 @@ class Root extends React.Component {
             { title: 'Simple Todo 2' },
             { title: 'Simple Todo 3' }
         ]);
+        console.log(typeof this.store);
     }
     render() {
         return(
             <div>
                 <h1>ToDoStick</h1>
+                <TodoList todos={this.store.todos} />
             </div>
         );
     }

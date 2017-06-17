@@ -36,7 +36,7 @@ class TodoListStore {
             id = IDGenerator();
         } while(this.getTodoById(id) !== undefined)
 
-        this.todos.push({ title, id });
+        this.todos.push({ title, id, isComplited: false });
         this.saveTodoInLS();
     };
 

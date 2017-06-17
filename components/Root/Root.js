@@ -13,7 +13,6 @@ class Root extends React.Component {
             { title: 'Simple Todo 2' },
             { title: 'Simple Todo 3' }
         ]);
-        console.log(typeof this.store);
     }
     render() {
         const service = this.store.getService();

@@ -1,0 +1,45 @@
+.input {
+    min-width: 278px;
+    height: 38px;
+    border: 1px solid #999999;
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 15px;
+    .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto 12px auto 9px;
+        box-sizing: border-box;
+        min-width: 20px;
+        min-height: 20px;
+    }
+    input,
+    input:hover,
+    input:active,
+    input:focus {
+        outline: none;
+        border: none;
+        box-shadow: none;
+    }
+    input {
+        width: 100%;
+        margin: 5px 8px 5px 0;
+        font-size: 16px;
+    }
+    @plColor: #aaa;
+    input::-webkit-input-placeholder {color:@plColor;}
+    input::-moz-placeholder          {color:@plColor;}/* Firefox 19+ */
+    input:-moz-placeholder           {color:@plColor;}/* Firefox 18- */
+    input:-ms-input-placeholder      {color:@plColor;}
+    &:hover,
+    &:focus {
+        border: 1px solid #3DA1C5;
+    }
+    &:focus {
+        box-shadow: 0 0 10px #3DA1C5;
+    }
+}
+.input--error {
+    border: 1px solid #DE3318;
+}

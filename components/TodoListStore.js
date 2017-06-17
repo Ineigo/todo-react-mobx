@@ -6,6 +6,11 @@ class TodoListStore {
     }
 
     @observable todos = [];
+
+    createTodo = title => {
+        console.log(title);
+        this.todos.push({ title })
+    };
 }
 
 export default TodoListStore;

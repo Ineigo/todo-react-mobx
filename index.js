@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TodoListStore from './components/TodoList/TodoListStore';
+import TodoListStore from './components/TodoListStore';
 import TodoList from './components/TodoList';
+import TodoControls from './components/TodoControls';
 
 class Root extends React.Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class Root extends React.Component {
         return(
             <div>
                 <h1>ToDoStick</h1>
+                <TodoControls createTodo={this.store.createTodo} />
                 <TodoList todos={this.store.todos} />
             </div>
         );

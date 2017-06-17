@@ -3,6 +3,7 @@ import React from 'react';
 import { PropTypes as PTMobx, observer } from 'mobx-react';
 import Todo from './Todo';
 
+@observer
 class TodoList extends React.Component {
     static propTypes = {
         todos: PTMobx.observableArray.isRequired

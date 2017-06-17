@@ -15,7 +15,12 @@ class TodoControls extends React.Component {
     }
     render() {
         return <div>
-            <Input type="text" placeholder="Todo Title" onChange={this._onChange} value={this.state.title} />
+            <Input 
+                type="text" 
+                placeholder="Todo Title" 
+                onChange={this._onChange} 
+                value={this.state.title} 
+            />
             <Button title="add todo" onClick={this._createTodo} />
         </div>;
     }

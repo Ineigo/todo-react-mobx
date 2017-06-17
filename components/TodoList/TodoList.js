@@ -17,7 +17,13 @@ class TodoList extends React.Component {
     }
 
     _makeTodo(el) {
-        return <Todo key={el.id} todo={el} removeTodo={this.props.service.removeTodo} />;
+        const service = this.props.service;
+        return <Todo 
+            key={el.id} 
+            todo={el} 
+            removeTodo={service.removeTodo}
+            editTodo={service.editTodo}
+        />;
     }
 }
 

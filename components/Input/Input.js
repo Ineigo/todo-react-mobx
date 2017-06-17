@@ -7,6 +7,10 @@ import classNames from 'classnames';
 class Input extends Component {
     static propTypes = {
         type: PropTypes.string,
+        value: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]),
         isError: PropTypes.bool,
         placeholder: PropTypes.string,
         onChange: PropTypes.func.isRequired
@@ -19,7 +23,12 @@ class Input extends Component {
             <div className={style.icon}>
                 {this.props.children}
             </div>
-            <input type={this.props.type} placeholder={this.props.placeholder} onChange={this.props.onChange}/>
+            <input 
+                type={this.props.type} 
+                placeholder={this.props.placeholder} 
+                onChange={this.props.onChange}
+                value={this.props.value}
+            />
         </div>);
     }
 }

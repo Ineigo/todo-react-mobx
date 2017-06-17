@@ -23,6 +23,7 @@ class TodoList extends React.Component {
             todo={el} 
             removeTodo={service.removeTodo}
             editTodo={service.editTodo}
+            toggleComplited={service.toggleComplitedTodo}
         />;
     }
 }

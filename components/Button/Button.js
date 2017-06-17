@@ -7,6 +7,7 @@ class MdButton extends React.Component {
     static propTypes = {
         type: PropTypes.string,
         title: PropTypes.string,
+        className: PropTypes.string,
         size: PropTypes.string,
         disabled: PropTypes.bool,
         fontWeight: PropTypes.string,
@@ -55,8 +56,7 @@ class MdButton extends React.Component {
             style['button__body'], {
                 [style[`button--${this.props.size}`]]: this.props.size,
                 [style[`button--${this.props.type}`]]: this.props.type,
-                [style['button__body--loading']]: this.props.loading,
-                [this.props.extraClasses]: this.props.extraClasses
+                [style['button__body--loading']]: this.props.loading
             }
         );
     }
@@ -71,7 +71,8 @@ class MdButton extends React.Component {
     _getClassNamesForWrapper() {
         return classNames(style['button'], {
             [style['button--disabled']]: this.props.disabled && !this.props.loading,
-            [style[`button--${this.props.widthStyle}`]]: this.props.widthStyle
+            [style[`button--${this.props.widthStyle}`]]: this.props.widthStyle,
+            [this.props.className]: this.props.className
         });
     }
 }

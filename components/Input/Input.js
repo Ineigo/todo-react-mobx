@@ -13,16 +13,18 @@ class Input extends Component {
         ]),
         isError: PropTypes.bool,
         placeholder: PropTypes.string,
-        onChange: PropTypes.func.isRequired
+        onChange: PropTypes.func.isRequired,
+        className: PropTypes.string
     };
     render() {
         const wrapperClasses = classNames(
-            style.input, { [style['input--error']]: this.props.isError }
+            style.input, 
+            { 
+                [style['input--error']]: this.props.isError,
+                [this.props.className]: this.props.className
+            }
         );
         return (<div className={wrapperClasses}>
-            <div className={style.icon}>
-                {this.props.children}
-            </div>
             <input 
                 type={this.props.type} 
                 placeholder={this.props.placeholder} 

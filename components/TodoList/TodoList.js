@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { PropTypes as PTMobx, observer } from 'mobx-react';
 import Todo from './Todo';
+import style from './style.less';
 
 @observer
 class TodoList extends React.Component {
@@ -11,7 +12,7 @@ class TodoList extends React.Component {
     }
 
     render() {
-        return (<ul>
+        return (<ul className={style.list_wrapper}>
             {this.props.todos.map(el => this._makeTodo(el))}
         </ul>);
     }

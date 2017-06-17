@@ -2,6 +2,7 @@ import React from 'react';
 import Input from '../Input';
 import Button from '../Button';
 import PropTypes from 'prop-types';
+import style from './style.less';
 
 class TodoControls extends React.Component {
     static propTypes = {
@@ -12,26 +13,29 @@ class TodoControls extends React.Component {
         super(props);
         this.state = {
             title: '',
-            sort: 1
+            sort: 1,
+            isError: false
         }
     }
     render() {
-        return <div>
+        return <div className={style.controls_wrapper}>
             <Input 
                 type="text" 
                 placeholder="Todo Title" 
                 onChange={this._onChange} 
-                value={this.state.title} 
+                value={this.state.title}
+                isError={this.state.isError}
+                className={style.input}
             />
-            <Button title="add todo" onClick={this._createTodo} />
-            {this._makeSortControl()}
-        </div>;
-    }
-    _makeSortControl() {
-        return <div>
-                <a onClick={this._sort}>
-                    {this.state.sort > 0 ? 'asc' : 'desc'}
-                </a>
+            <Button 
+                className={style.button} 
+                type="submit" title="+" 
+                onClick={this._createTodo}
+                disabled={this.state.isError || !this.state.title}
+            />
+            <a onClick={this._sort} className={style.sort}>
+                {this.state.sort > 0 ? 'asc' : 'desc'}
+            </a>
         </div>;
     }
 
@@ -40,10 +44,15 @@ class TodoControls extends React.Component {
         this.setState({ sort: -this.state.sort});
     }
     _onChange = e => {
-        this.setState({ title: e.target.value });
+        const val = e.target.value;
+        this.setState({ 
+            title: val,
+            isError: !val
+        });
     }
     _createTodo = () => {
         this.props.createTodo(this.state.title);
+        this.setState({ title: ''});
     }
 }
 

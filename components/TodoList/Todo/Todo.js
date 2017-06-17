@@ -4,6 +4,8 @@ import { PropTypes as PTMobx, observer} from 'mobx-react';
 import Input from '../../Input';
 import Button from '../../Button';
 import Checkbox from '../../Checkbox';
+import style from './style.less';
+import classNames from 'classnames';
 
 @observer
 class Todo extends React.Component {
@@ -22,9 +24,14 @@ class Todo extends React.Component {
     }
     render() {
         const isEdit = this.state.isEdit;
-        return <li>
+        const wrapperClass = classNames(style.todo_wrapper, {
+            [style.isComplited]: this.props.todo.isComplited
+        });
+        return <li className={wrapperClass}>
             <Checkbox value={this.props.todo.isComplited} onChange={this._toggleComplited} />
-            {isEdit ? this._makeEdit() : this._makeTitle() }
+            <div className={style.title}>
+                {isEdit ? this._makeEdit() : this._makeTitle() }
+            </div>
             &nbsp;
             <a onClick={this._removeTodo}>remove</a>
         </li>;
@@ -35,13 +42,17 @@ class Todo extends React.Component {
     }
 
     _makeEdit() {
-        return <div>
+        return <div className={style.edit}>
             <Input 
                 type="text" 
                 onChange={this._setValue}
                 value={this.state.value} 
             />
-            <Button onClick={this._saveValue} title="save"/>
+            <Button 
+                onClick={this._saveValue}
+                title="save"
+                className={style.button}
+            />
         </div>;
     }
     

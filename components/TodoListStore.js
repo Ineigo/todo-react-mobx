@@ -26,7 +26,7 @@ class TodoListStore {
     }
 
     sortTodoList = type => {
-        this.todos.replace(this.todos.sort((prev, next) => prev.title > next.title  ? -type : prev.title  < next.title  ? type : 0));
+        this.todos.replace(this.todos.sort((prev, next) => type * prev.title.localeCompare(next.title)));
         this.saveTodoInLS()
     }
 
